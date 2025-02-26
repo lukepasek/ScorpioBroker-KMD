@@ -270,6 +270,7 @@ public class ClientManager {
 				logger.warn("Tenant '{}' database migration failed, attempting repair.", tenant, e);
 				try {
 					flyway.repair();
+					flyway.baseline();
 					flyway.migrate();
 					logger.info("Tenant '{}' database repair and migration finished", tenant);
 				} catch (FlywayException fe) {
