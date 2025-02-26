@@ -194,7 +194,7 @@ public class ClientManager {
 			logger.warn("failed to create tenant database attempting repair", e);
 			try {
 				flyway.repair();
-				flyway.setBaselineOnMigrate(true);
+				flyway.baseline();
 				flyway.migrate();
 			} catch (Exception e1) {
 				logger.error("repair failed", e);
